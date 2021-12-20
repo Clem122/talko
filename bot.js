@@ -105,7 +105,7 @@ client.on('guildMemberAdd', async member => {
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
 	ctx.drawImage(avatar, 20, 25, 190, 190);
 
-	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
+	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
 });
