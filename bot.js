@@ -300,7 +300,7 @@ client.on('guildMemberRemove', async member => {
             }
             const embed = new Discord.MessageEmbed()
             .setColor(embedcolor)
-            .setDescription(`Successfully registered everyone`)
+            .setDescription(`Pomyślnie wyczyszczono ranking`)
             message.reply(embed);
         }
 
