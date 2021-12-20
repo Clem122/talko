@@ -154,10 +154,10 @@ client.on('guildMemberAdd', async member => {
     if (client.points.get(key, `level`) < curLevel) {
       //define ranked embed
       const embed = new Discord.MessageEmbed()
-        .setTitle(`Ranking of:  ${message.author.username}`)
+        .setTitle(`Level:  ${message.author.username}`)
         .setTimestamp()
-        .setDescription(`You've leveled up to Level: **\`${curLevel}\`**! (Points: \`${Math.floor(client.points.get(key, `points`) * 100) / 100}\`) `)
-        .setColor("GREEN");
+        .setDescription(`Właśnie zdobyłeś nowy poziom!: **\`${curLevel}\`**! (Points: \`${Math.floor(client.points.get(key, `points`) * 100) / 100}\`) `)
+        .setColor("BLACK");
       //send ping and embed message
       message.channel.send(`<@` + message.author.id + `>`);
       message.channel.send(embed);
@@ -187,7 +187,7 @@ client.on('guildMemberAdd', async member => {
           i++;
           if (client.users.cache.get(data.user).tag === rankuser.tag) break;
         } catch {
-          i = `Error counting Rank`;
+          i = `Error`;
           break;
         }
       }
@@ -199,16 +199,16 @@ client.on('guildMemberAdd', async member => {
       //if not level == no rank
       if (client.points.get(key, `level`) === undefined) i = `No Rank`;
       //define a temporary embed so its not coming delayed
-      let tempmsg = await message.channel.send(new Discord.MessageEmbed().setColor("RED").setAuthor("Calculating...", "https://cdn.discordapp.com/emojis/769935094285860894.gif"))
+      let tempmsg = await message.channel.send(new Discord.MessageEmbed().setColor("RED").setAuthor("Ciągi, wzory i dziedzina szlugi talko kokaina", "https://cdn.discordapp.com/emojis/769935094285860894.gif"))
       //global local color var.
       let color;
       //define status of the rankuser
       let status = rankuser.presence.status;
       //do some coloring for user status cause cool
-      if (status === "dnd") { color = "#ff0048"; }
-      else if (status === "online") { color = "#00fa81"; }
-      else if (status === "idle") { color = "#ffbe00"; }
-      else { status = "streaming"; color = "#a85fc5"; }
+      if (status === "dnd") { color = "#6c25be"; }
+      else if (status === "online") { color = "#6c25be"; }
+      else if (status === "idle") { color = "#6c25be"; }
+      else { status = "streaming"; color = "#6c25be"; }
       //define the ranking card
       const rank = new canvacord.Rank()
         .setAvatar(rankuser.displayAvatarURL({ dynamic: false, format: 'png' }))
@@ -220,8 +220,8 @@ client.on('guildMemberAdd', async member => {
         .setRankColor(color, "COLOR")
         .setLevelColor(color, "COLOR")
         .setUsername(rankuser.username, color)
-        .setRank(Number(i), "Rank", true)
-        .setLevel(Number(client.points.get(key, `level`)), "Level", true)
+        .setRank(Number(i), "Twoja ranga", true)
+        .setLevel(Number(client.points.get(key, `level`)), "Poziom", true)
         .setDiscriminator(rankuser.discriminator, color);
       rank.build()
         .then(async data => {
@@ -229,7 +229,7 @@ client.on('guildMemberAdd', async member => {
           const attachment = new Discord.MessageAttachment(data, "RankCard.png");
           //define embed
           const embed = new Discord.MessageEmbed()
-            .setTitle(`Ranking of:  ${rankuser.username}`)
+            .setTitle(`Poziom użytkownika:  ${rankuser.username}`)
             .setColor(color)
             .setImage("attachment://RankCard.png")
             .attachFiles(attachment)
@@ -241,7 +241,7 @@ client.on('guildMemberAdd', async member => {
         });
     }
     //leaderboard command
-    if (message.content.toLowerCase() === `${config.PREFIX}leaderboard`) {
+    if (message.content.toLowerCase() === `${config.PREFIX}topka`) {
       //some databasing and math
       const filtered = client.points.filter(p => p.guild === message.guild.id).array();
       const sorted = filtered.sort((a, b) => b.points - a.points);
@@ -249,7 +249,7 @@ client.on('guildMemberAdd', async member => {
       const embed = new Discord.MessageEmbed()
         .setTitle(`${message.guild.name}: Leaderboard`)
         .setTimestamp()
-        .setDescription(`Top 10 Ranking:`)
+        .setDescription(`Top 10 najwspnialszych użytkowników:`)
         .setColor("ORANGE");
       //set counter to 0
       let i = 0;
@@ -257,10 +257,10 @@ client.on('guildMemberAdd', async member => {
       for (const data of top10) {
         await delay(15); try {
           i++;
-          embed.addField(`**${i}**. ${client.users.cache.get(data.user).tag}`, `Points: \`${Math.floor(data.points * 100) / 100}\` | Level: \`${data.level}\``);
+          embed.addField(`**${i}**. ${client.users.cache.get(data.user).tag}`, `Punkty: \`${Math.floor(data.points * 100) / 100}\` | Poziom: \`${data.level}\``);
         } catch {
           i++; //if usernot found just do this
-          embed.addField(`**${i}**. ${client.users.cache.get(data.user)}`, `Points: \`${Math.floor(data.points * 100) / 100}\` | Level: \`${data.level}\``);
+          embed.addField(`**${i}**. ${client.users.cache.get(data.user)}`, `Punkty: \`${Math.floor(data.points * 100) / 100}\` | Poziom: \`${data.level}\``);
         }
       }
       //schick das embed
