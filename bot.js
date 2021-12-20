@@ -94,11 +94,11 @@ client.on('guildMemberAdd', async member => {
 
 	ctx.font = '37px Genta';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 1.5, canvas.height / 3.5);
+	ctx.fillText('Witaj na serwerze', canvas.width / 3.5, canvas.height / 3.5);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 1.5, canvas.height / 1.7);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 3.5, canvas.height / 1.7);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
@@ -265,6 +265,19 @@ client.on('guildMemberAdd', async member => {
       //schick das embed
       return message.channel.send(embed);
     }
+	  
+	    if (message.content.toLowerCase() === `${config.PREFIX}resetall`) {
+            let allmembers = message.guild.members.cache.keyArray();
+            for (let i = 0; i < allmembers.length; i++) {
+                //Call the databasing function!
+                let rankuser = message.guild.members.cache.get(allmembers[i]).user;
+                databasing(rankuser);
+            }
+            const embed = new Discord.MessageEmbed()
+            .setColor(embedcolor)
+            .setDescription(`Wyczyszczono poziomy wszystkich użytkowników`)
+            message.reply(embed);
+        }
 
   })
   function delay(delayInms) {
