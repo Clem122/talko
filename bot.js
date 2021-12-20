@@ -114,6 +114,37 @@ client.on('guildMemberAdd', async member => {
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
 });
 
+client.on('guildMemberRemove', async member => {
+	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
+	if (!channel) return;
+
+	const canvas = Canvas.createCanvas(800, 250);
+	const ctx = canvas.getContext('2d');
+
+	const background = await Canvas.loadImage('./dziad.png');
+	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+	ctx.font = '37px Genta';
+	ctx.fillStyle = '#ffffff';
+	ctx.fillText('Spieprzaj dziadzie', canvas.width / 3.5, canvas.height / 3.5);
+
+	ctx.font = applyText(canvas, `${member.displayName}!`);
+	ctx.fillStyle = '#ffffff';
+	ctx.fillText(`${member.displayName}!`, canvas.width / 3.5, canvas.height / 1.7);
+
+	ctx.beginPath();
+	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
+	ctx.closePath();
+	ctx.clip();
+
+	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+	ctx.drawImage(avatar, 20, 25, 190, 190);
+
+	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/dziad.png');
+
+	channel.send(`:eggplant: **${member}** **Opuściła nas gnida**`, attachment);
+});
+
   client.on("message", async (message) => {
 
     if (message.author.bot) return;
