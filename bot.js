@@ -6,11 +6,6 @@ const fs = require("fs");
 const Canvas = require('canvas');
 const prefix = "$";
 
-client.on('ready', () => {
-    client.user.setActivity("jablonska kurewica")
-    console.log("Logged in successfully :D")
-})
-
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
 
 const shortcode = (n) => {
@@ -44,8 +39,7 @@ client.on('message', (message) => {
             }
         }
     })
-    client.guilds.get("746030108460056718").member(message.author).addRole("746037675768938546");
-    client.guilds.get("746030108460056718").member(message.author).removeRole("746076005650792518");
+    client.guilds.get("922242038722887751").member(message.author).addRole("922282005385863190");
 })
 
 client.on('disconnect', (event) => {
@@ -77,6 +71,11 @@ client.on('message', message => {
 
 client.on("ready", () => {
     client.user.setStatus("dnd");
+})
+
+client.on('ready', () => {
+    client.user.setActivity("jablonska kurewica")
+    console.log("Logged in successfully :D")
 })
 
 client.login(process.env.BOT_TOKEN);
