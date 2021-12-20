@@ -1,5 +1,5 @@
 const discord = require("discord.js")
-const bot = new discord.Client()
+const client = new discord.Client()
 
 client.on('ready', () => {
     bot.user.setActivity("jablonska kurewica")
