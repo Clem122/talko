@@ -83,7 +83,7 @@ const applyText = (canvas, text) => {
 	return ctx.font;
 };
 
-client.on('guildMemberRemove', async member => {
+client.on('guildMemberAdd', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
 	if (!channel) return;
 
