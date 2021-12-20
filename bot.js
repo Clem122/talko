@@ -6,6 +6,8 @@ const fs = require("fs");
 const Canvas = require('canvas');
 const snekfetch = require('snekfetch');
 const verified_role_id = "922282005385863190";
+const zdjecia = fs.readFileSync('./zdjecia/')
+let losowanko = files[Math.floor(Math.random() * files.length)] 
 const prefix = "$";
 
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
@@ -102,7 +104,7 @@ client.on('guildMemberAdd', async member => {
 	ctx.closePath();
 	ctx.clip();
 
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '${losowanko}');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me**`, attachment);
 });
