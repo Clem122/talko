@@ -110,8 +110,7 @@ client.on('guildMemberAdd', async member => {
       	ctx.fillText(`${member.displayName}!`, canvas.width / 3, canvas.height / 1);
 	
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-      	ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
-	
+	ctx.drawImage(avatar, 20, 25, 190, 190);
 	
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
