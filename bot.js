@@ -4,6 +4,9 @@ const config = require('./config.json')
 const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
+const Enmap = require("enmap");  
+client.points = new Enmap({ name: "points" });
+const canvacord = require("canvacord");
 const snekfetch = require('snekfetch');
 const verified_role_id = "922282005385863190";
 const prefix = "$";
@@ -272,7 +275,6 @@ client.on('guildMemberAdd', async member => {
       }, delayInms);
     });
   }
-}
 
 client.on("ready", () => {
     client.user.setStatus("dnd");
