@@ -106,7 +106,7 @@ client.on('guildMemberAdd', async member => {
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
-	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me**  ${Member.guild.memberCount}`, attachment);
+	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me**  ${member.guild.memberCount}`, attachment);
 });
 
 client.on("ready", () => {
