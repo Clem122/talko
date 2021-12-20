@@ -86,7 +86,7 @@ client.on('guildMemberAdd', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
 	if (!channel) return;
 
-	const canvas = Canvas.createCanvas(700, 250);
+	const canvas = Canvas.createCanvas(800, 250);
 	const ctx = canvas.getContext('2d');
 
 	const background = await Canvas.loadImage('./welcome-image.png');
