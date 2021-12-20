@@ -107,7 +107,7 @@ client.on('guildMemberAdd', async member => {
 	ctx.clip();
 
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 20, 25, 190, 190);
+	ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
