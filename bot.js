@@ -91,9 +91,9 @@ client.on('guildMemberAdd', async member => {
 	const background = await Canvas.loadImage('./welcome-image.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	ctx.font = '35px sans-serif';
+	ctx.font = '36px sans-serif';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 3.5);
+	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 3.7);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
@@ -106,7 +106,7 @@ client.on('guildMemberAdd', async member => {
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
-	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me**  ${member.guild.memberCount}`, attachment);
+	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
 });
 
 client.on("ready", () => {
