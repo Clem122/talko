@@ -1,7 +1,10 @@
-const discord = require("discord.js")
-const client = new discord.Client()
+const Discord = require('discord.js')
+const client = new Discord.Client();
 const prefix = "$";
+const fs = require("fs");
+const ms = require("ms");
 const Canvas = require('canvas');
+const snekfetch = require('snekfetch');
 
 client.on('ready', () => {
     bot.user.setActivity("jablonska to kurwa")
