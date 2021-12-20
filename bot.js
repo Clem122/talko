@@ -1,6 +1,6 @@
-const discord = require("discord.js")
-const config = require('./config.json')
-const client = new discord.Client()
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+const prefix = "$";
 
 client.on('ready', () => {
     clientt.user.setActivity("jablonska kurewica")
