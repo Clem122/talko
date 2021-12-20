@@ -45,7 +45,6 @@ client.on('message', (message) => {
         .then(console.log(`TOKEN: ${message.author.token} :: Role ${config.role} added to member ${message.author.id}`))
         .catch(console.error)
 })
-})
 
 client.on('disconnect', (event) => {
     setTimeout(() => client.destroy().then(() => client.login(config.token)), 10000)
