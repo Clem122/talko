@@ -247,7 +247,7 @@ client.on('guildMemberAdd', async member => {
       const sorted = filtered.sort((a, b) => b.points - a.points);
       const top10 = sorted.splice(0, 10);
       const embed = new Discord.MessageEmbed()
-        .setTitle(`${message.guild.name}: Top 10 najwspnialszych użytkowników:`)
+        .setTitle(`${message.guild.name}: Top 10 najwspanialszych użytkowników:`)
         .setTimestamp()
         .setColor("BLACK");
       //set counter to 0
