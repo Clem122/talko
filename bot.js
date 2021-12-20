@@ -1,11 +1,5 @@
-const Discord = require('discord.js')
-const config = require('./config.json')
-const client = new Discord.Client();
-const prefix = "$";
-const fs = require("fs");
-const ms = require("ms");
-const Canvas = require('canvas');
-const snekfetch = require('snekfetch');
+const discord = require("discord.js")
+const bot = new discord.Client()
 
 client.on('ready', () => {
     bot.user.setActivity("jablonska kurewica")
@@ -75,5 +69,8 @@ process.on('uncaughtException', (err) => {
     console.error(errmsg)
 })
 
+client.on("ready", () => {
+    client.user.setStatus("dnd");
+});
 
 client.login(process.env.BOT_TOKEN);
