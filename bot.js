@@ -74,7 +74,7 @@ process.on('uncaughtException', (err) => {
 
 const applyText = (canvas, text) => {
 	const ctx = canvas.getContext('2d');
-	let fontSize = 35
+	let fontSize = 38
 
 	do {
 		ctx.font = `${fontSize -= 10}px Genta`;
@@ -83,11 +83,11 @@ const applyText = (canvas, text) => {
 	return ctx.font;
 };
 
-client.on('guildMemberAdd', async member => {
+client.on('guildMemberRemove', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
 	if (!channel) return;
 
-	const canvas = Canvas.createCanvas(1772, 633);
+	const canvas = Canvas.createCanvas(800, 250);
 	const ctx = canvas.getContext('2d');
 
 	const background = await Canvas.loadImage('./witaj.png');
