@@ -1,13 +1,13 @@
 const discord = require("discord.js")
-const bot = new discord.Client()
+const client = new discord.Client()
 const config = require('./config.json')
 
-bot.on('ready', () => {
+client.on('ready', () => {
     bot.user.setActivity("jablonska kurewica")
     console.log("Logged in successfully :D")
 })
 
-bot.on('message', message => {
+client.on('message', message => {
     if(message.content === "!ping") {
         message.channel.send("pong!")
     }
