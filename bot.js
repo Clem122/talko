@@ -73,7 +73,7 @@ const applyText = (canvas, text) => {
 	let fontSize = 70;
 
 	do {
-		ctx.font = `${fontSize -= 10}px sans-serif`;
+		ctx.font = `${fontSize -= 10}px Genta`;
 	} while (ctx.measureText(text).width > canvas.width - 400);
 
 	return ctx.font;
@@ -91,7 +91,7 @@ client.on('guildMemberAdd', async member => {
 	const background = await Canvas.loadImage('./welcome-image.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	ctx.font = '36px sans-serif';
+	ctx.font = '36px Genta';
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 3.7);
 
@@ -103,6 +103,11 @@ client.on('guildMemberAdd', async member => {
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
+	
+	const textString4 = `Jesteś #${member.guild.memberCount}`;
+      	ctx.font = 'bold 60px Genta';
+     	ctx.fillStyle = '#f2f2f2';
+      	ctx.fillText(textString4, 750, canvas.height / 2 + 125);
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
