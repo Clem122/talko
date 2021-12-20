@@ -4,6 +4,7 @@ const config = require('./config.json')
 const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
+const verified_role_id = "922282005385863190";
 const prefix = "$";
 
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
@@ -39,8 +40,8 @@ client.on('message', (message) => {
             }
         }
     })
-    const verify = message.guild.roles.cache.get('922282005385863190');
-    member.roles.add(verify).catch(console.error);
+    const lala = message.guild.roles.cache.fin(r => r.name === "Członek")
+    message.member.roles.add(lala)
 })
 
 client.on('disconnect', (event) => {
