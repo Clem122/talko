@@ -1,6 +1,7 @@
 const discord = require("discord.js")
 const client = new discord.Client()
 const prefix = "$";
+const Canvas = require('canvas');
 
 client.on('ready', () => {
     bot.user.setActivity("jablonska to kurwa")
