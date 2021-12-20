@@ -13,12 +13,6 @@ client.on('message', message => {
     }
 })
 
-client.on('guildMemberAdd', (member) => {
-    if (member.user.bot || member.guild.id !== config.guild) return
-    const welcomemsg = `**Hej! Zweryfikuj konto** Pamiętaj, aby przed weryfikacją zerknąć na kanał \`#zasady\` i \`#informacje\` \n\n Weryfikując swoje konto oświadczasz, że masz minimum 13 lat, proszę przepisz poniższy kod. \n\n\`${token}\` \n\n\Nie możesz się zweryfikować? Skontaktuj się z administratorem serwera..`
-    member.send(welcomemsg)
-})
-
 client.on("ready", () => {
     client.user.setStatus("dnd");
 })
