@@ -299,7 +299,7 @@ client.on('guildMemberRemove', async member => {
             }
             const embed = new Discord.MessageEmbed()
             .setColor(embedcolor)
-            .setDescription(`Pomyślnie wyczyszczono ranking`)
+            .setDescription(`Successfully registered everyone`)
             message.reply(embed);
         }
 
@@ -315,9 +315,9 @@ client.on('guildMemberRemove', async member => {
             }
             const embed = new Discord.MessageEmbed()
             .setColor(embedcolor)
-            .setDescription(`Successfully resetted everyone`)
+            .setDescription(`Pomyślnie zresetowano levele`)
             message.reply(embed);
-        })
+        }
 
   function delay(delayInms) {
     return new Promise(resolve => {
