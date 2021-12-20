@@ -86,7 +86,7 @@ client.on('guildMemberAdd', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
 	if (!channel) return;
 
-	const canvas = Canvas.createCanvas(800, 250);
+	const canvas = Canvas.createCanvas(1000, 250);
 	const ctx = canvas.getContext('2d');
 
 	const background = await Canvas.loadImage('./welcome-image.png');
@@ -216,7 +216,7 @@ client.on('guildMemberAdd', async member => {
         .setRequiredXP(Number(curnextlevel.toFixed(2)), color)
         .setStatus(status, false, 7)
         .renderEmojis(true)
-        .setProgressBar(color, "#DDA0DD")
+        .setProgressBar('#DDA0DD', "COLOR")
         .setRankColor(color, "COLOR")
         .setLevelColor(color, "COLOR")
         .setUsername(rankuser.username, color)
