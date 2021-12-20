@@ -70,17 +70,17 @@ process.on('uncaughtException', (err) => {
 
 const applyText = (canvas, text) => {
 	const ctx = canvas.getContext('2d');
-	let fontSize = 70;
+	let fontSize = 50
 
 	do {
-		ctx.font = `${fontSize -= 10}px Genta`;
-	} while (ctx.measureText(text).width > canvas.width - 400);
+		ctx.font = `${fontSize -= 10}px impact`;
+	} while (ctx.measureText(text).width > canvas.width - 300);
 
 	return ctx.font;
 };
 
 client.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
+	const channel = member.guild.channels.find(ch => ch.name === 'witamy;
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
@@ -89,24 +89,24 @@ client.on('guildMemberAdd', async member => {
 	const background = await Canvas.loadImage('./welcome-image.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	ctx.font = '38px Genta';
+	ctx.font = '35px impact';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 5, canvas.height / 4.3);
+	ctx.fillText('Witaj na serwerze', canvas.width / 3.2, canvas.height / 3.5);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 4, canvas.height / 1.3);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 3.2, canvas.height / 1.7);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
-	
-	
-	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 5, 10, 190, 190);
-	
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
+
+	const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
+	const avatar = await Canvas.loadImage(buffer);
+	ctx.drawImage(avatar, 20, 25, 190, 190);
+
+	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
 });
