@@ -5,6 +5,7 @@ const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
 const prefix = "$";
+var server = client.guilds.cache.get(922242038722887751);
 
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
 
@@ -39,8 +40,8 @@ client.on('message', (message) => {
             }
         }
     })
-    client.guilds.get("922242038722887751").member(message.author).addRole("922282005385863190");
-    client.guilds.get("922242038722887751").member(message.author).removeRole("922283217170599957");
+    message.client.guilds.fetch("922242038722887751").member(message.author).addRole("922282005385863190");
+    message.client.guilds.fetch("922242038722887751").member(message.author).removeRole("922283217170599957");
 })
 
 client.on('disconnect', (event) => {
