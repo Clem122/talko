@@ -266,7 +266,7 @@ client.on('guildMemberAdd', async member => {
       return message.channel.send(embed);
     }
 	  
-        function registerall() {
+        if (message.content.toLowerCase() === `${config.PREFIX}registerall`) {
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 //Call the databasing function!
@@ -279,7 +279,7 @@ client.on('guildMemberAdd', async member => {
             message.reply(embed);
         }
 
-        function resetrankingall() {
+        if (message.content.toLowerCase() === `${config.PREFIX}resetrankingall`) {
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 let rankuser = message.guild.members.cache.get(allmembers[i]).user;
