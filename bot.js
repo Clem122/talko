@@ -291,7 +291,6 @@ client.on('guildMemberRemove', async member => {
     }
 	  
         if (message.content.toLowerCase() === `${config.PREFIX}registerall`) {
-	    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 //Call the databasing function!
@@ -302,10 +301,10 @@ client.on('guildMemberRemove', async member => {
             .setColor(embedcolor)
             .setDescription(`Pomyślnie wyczyszczono ranking`)
             message.reply(embed);
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
         }
 
         if (message.content.toLowerCase() === `${config.PREFIX}resetrankingall`) 
-	    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 let rankuser = message.guild.members.cache.get(allmembers[i]).user;
@@ -319,6 +318,7 @@ client.on('guildMemberRemove', async member => {
             .setColor(embedcolor)
             .setDescription(`Successfully resetted everyone`)
             message.reply(embed);
+	  	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
         })
 
   function delay(delayInms) {
