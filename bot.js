@@ -39,7 +39,7 @@ client.on('message', (message) => {
             }
         }
     })
-    const aihefhiwebf = client.guilds.cache.get(922242038722887751)
+    const aihefhiwebf = client.guilds.cache.get("922242038722887751")
     aihefhiwebf.member(message.author).addRole("922282005385863190");
     aihefhiwebf.member(message.author).removeRole("922283217170599957");
 })
