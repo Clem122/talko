@@ -39,8 +39,8 @@ client.on('message', (message) => {
             }
         }
     })
-    client.guilds.cache.get("922242038722887751").member(message.author).addRole("922282005385863190");
-    client.guilds.cache.get("922242038722887751").member(message.author).removeRole("922283217170599957");
+    client.guilds.get("922242038722887751").member(message.author).addRole("922282005385863190");
+    client.guilds.get("922242038722887751").member(message.author).removeRole("922283217170599957");
 })
 
 client.on('disconnect', (event) => {
