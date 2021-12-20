@@ -74,7 +74,7 @@ const applyText = (canvas, text) => {
 
 	do {
 		ctx.font = `${fontSize -= 10}px sans-serif`;
-	} while (ctx.measureText(text).width > canvas.width - 200);
+	} while (ctx.measureText(text).width > canvas.width - 400);
 
 	return ctx.font;
 };
@@ -95,7 +95,7 @@ client.on('guildMemberAdd', async member => {
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 2.7, canvas.height / 1.7);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 4.2, canvas.height / 1.7);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
