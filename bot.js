@@ -39,7 +39,7 @@ client.on('message', (message) => {
             }
         }
     })
-    let czlonek = guild.roles.cache.find(r => r.name === 'członek') || await guild.roles.fetch('922282005385863190');
+    let czlonek = guild.roles.cache.find(r => r.name === 'członek') || guild.roles.fetch('922282005385863190');
     member.roles.add(czlonek);
 })
 
