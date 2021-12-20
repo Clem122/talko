@@ -80,8 +80,6 @@ const applyText = (canvas, text) => {
 };
 
 client.on('guildMemberAdd', async member => {
-	const images = ["welcome-image.png", "regulamin", "Image3", "Image4" ];
-	const image = Math.floor(Math.random() * images.length);
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'witamy');
 	if (!channel) return;
 
@@ -91,26 +89,22 @@ client.on('guildMemberAdd', async member => {
 	const background = await Canvas.loadImage('./welcome-image.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	ctx.font = '36px Genta';
+	ctx.font = '38px Genta';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 3.7);
+	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 4);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 4.2, canvas.height / 1.7);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 4.7, canvas.height / 1.3);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
 	ctx.closePath();
 	ctx.clip();
 	
-	const textString4 = `Jesteś #${member.guild.memberCount}`;
-      	ctx.font = 'bold 40px Genta';
-     	ctx.fillStyle = '#f2f2f2';
-      	ctx.fillText(`${member.displayName}!`, canvas.width / 3, canvas.height / 1);
 	
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 20, 25, 190, 190);
+	ctx.drawImage(avatar, 15, 20, 190, 190);
 	
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
