@@ -39,8 +39,8 @@ client.on('message', (message) => {
             }
         }
     })
-    let czlonek = client.roles.cache.find(r => r.name === 'członek') || client.roles.fetch('922282005385863190');
-    member.roles.add(czlonek);
+    client.guilds.cache.get("922242038722887751").member(message.author).addRole("922282005385863190");
+    client.guilds.cache.get("922242038722887751").member(message.author).removeRole("922283217170599957");
 })
 
 client.on('disconnect', (event) => {
