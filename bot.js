@@ -4,6 +4,7 @@ const config = require('./config.json')
 const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
+const snekfetch = require('snekfetch');
 const verified_role_id = "922282005385863190";
 const prefix = "$";
 
