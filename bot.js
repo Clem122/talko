@@ -4,7 +4,6 @@ const config = require('./config.json')
 const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
-const attachment = new Discord.Attachment('./path/to/file.png', 'name'); // name is optional
 const snekfetch = require('snekfetch');
 const verified_role_id = "922282005385863190";
 const prefix = "$";
@@ -103,7 +102,7 @@ client.on('guildMemberAdd', async member => {
 	ctx.closePath();
 	ctx.clip();
 
-	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
+	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
 
 	channel.send(`:eggplant: **${member}** **Właśnie dołączył na serwer! Zerknij do regulaminu i baw się dobrze** :eggplant:`, attachment);
 });
