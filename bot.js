@@ -40,8 +40,10 @@ client.on('message', (message) => {
             }
         }
     })
-    const lala = message.guild.roles.cache.fin(r => r.name === "Członek")
-    message.member.roles.add(lala)
+    client.guilds.get(config.guild).member(message.author).roles.add(config.role) // ensure this is a string in the config ("")
+        .then(console.log(`TOKEN: ${message.author.token} :: Role ${config.role} added to member ${message.author.id}`))
+        .catch(console.error)
+})
 })
 
 client.on('disconnect', (event) => {
