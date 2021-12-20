@@ -205,10 +205,10 @@ client.on('guildMemberAdd', async member => {
       //define status of the rankuser
       let status = rankuser.presence.status;
       //do some coloring for user status cause cool
-      if (status === "dnd") { color = "#6c25be"; }
-      else if (status === "online") { color = "#6c25be"; }
-      else if (status === "idle") { color = "#6c25be"; }
-      else { status = "streaming"; color = "#6c25be"; }
+      if (status === "dnd") { color = "#FFFFFF"; }
+      else if (status === "online") { color = "#FFFFFF"; }
+      else if (status === "idle") { color = "#FFFFFF"; }
+      else { status = "streaming"; color = "#FFFFFF"; }
       //define the ranking card
       const rank = new canvacord.Rank()
         .setAvatar(rankuser.displayAvatarURL({ dynamic: false, format: 'png' }))
@@ -216,22 +216,22 @@ client.on('guildMemberAdd', async member => {
         .setRequiredXP(Number(curnextlevel.toFixed(2)), color)
         .setStatus(status, false, 7)
         .renderEmojis(true)
-        .setProgressBar(color, "COLOR")
+        .setProgressBar(color, "#DDA0DD")
         .setRankColor(color, "COLOR")
         .setLevelColor(color, "COLOR")
         .setUsername(rankuser.username, color)
         .setRank(Number(i), "Twoja ranga", true)
-        .setLevel(Number(client.points.get(key, `level`)), "Poziom", true)
+        .setLevel(Number(client.points.get(key, `level`)), "Poziom ", true)
         .setDiscriminator(rankuser.discriminator, color);
       rank.build()
         .then(async data => {
           //add rankcard to attachment
-          const attachment = new Discord.MessageAttachment(data, "RankCard.png");
+          const attachment = new Discord.MessageAttachment(data, "poziom.png");
           //define embed
           const embed = new Discord.MessageEmbed()
             .setTitle(`Poziom użytkownika:  ${rankuser.username}`)
             .setColor(color)
-            .setImage("attachment://RankCard.png")
+            .setImage("attachment://poziom.png")
             .attachFiles(attachment)
           //send that embed
           await message.channel.send(embed);
