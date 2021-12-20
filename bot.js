@@ -289,35 +289,6 @@ client.on('guildMemberRemove', async member => {
       //schick das embed
       return message.channel.send(embed);
     }
-	  
-        if (message.content.toLowerCase() === `${config.PREFIX}registerall`) {
-            let allmembers = message.guild.members.cache.keyArray();
-            for (let i = 0; i < allmembers.length; i++) {
-                //Call the databasing function!
-                let rankuser = message.guild.members.cache.get(allmembers[i]).user;
-                databasing(rankuser);
-            }
-            const embed = new Discord.MessageEmbed()
-            .setColor(embedcolor)
-            .setDescription(`Successfully registered everyone`)
-            message.reply(embed);
-        }
-
-        if (message.content.toLowerCase() === `${config.PREFIX}resetrankingall`) 
-            let allmembers = message.guild.members.cache.keyArray();
-            for (let i = 0; i < allmembers.length; i++) {
-                let rankuser = message.guild.members.cache.get(allmembers[i]).user;
-                const key = `${message.guild.id}-${rankuser.id}`;
-                client.points.set(key, 1, `level`); //set level to 0
-                client.points.set(key, 0, `points`); //set the points to 0
-                client.points.set(key, 400, `neededpoints`) //set neededpoints to 0 for beeing sure
-                client.points.set(key, "", `oldmessage`); //set old message to 0
-            }
-            const embed = new Discord.MessageEmbed()
-            .setColor(embedcolor)
-            .setDescription(`Pomyślnie zresetowano levele`)
-            message.reply(embed);
-        }
 
   function delay(delayInms) {
     return new Promise(resolve => {
