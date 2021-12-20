@@ -3,6 +3,7 @@ const client = new discord.Client()
 const config = require('./config.json')
 const ms = require("ms");
 const fs = require("fs");
+const Canvas = require('canvas');
 const prefix = "$";
 
 client.on('ready', () => {
