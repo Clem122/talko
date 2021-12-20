@@ -2,6 +2,7 @@ const discord = require("discord.js")
 const client = new discord.Client()
 const config = require('./config.json')
 const ms = require("ms");
+const fs = require("fs");
 const prefix = "$";
 
 client.on('ready', () => {
