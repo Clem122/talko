@@ -105,10 +105,14 @@ client.on('guildMemberAdd', async member => {
 	ctx.clip();
 	
 	const textString4 = `Jesteś #${member.guild.memberCount}`;
-      	ctx.font = 'bold 60px Genta';
+      	ctx.font = 'bold 40px Genta';
      	ctx.fillStyle = '#f2f2f2';
-      	ctx.fillText(textString4, 750, canvas.height / 2 + 125);
-
+      	ctx.fillText(`${member.displayName}!`, canvas.width / 3, canvas.height / 1);
+	
+	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
+      	ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
+	
+	
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
