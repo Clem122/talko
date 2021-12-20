@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const prefix = "$";
 
 client.on('ready', () => {
-    clientt.user.setActivity("jablonska kurewica")
+    client.user.setActivity("jablonska kurewica")
     console.log("Logged in successfully :D")
 })
 
