@@ -18,7 +18,7 @@ const shortcode = (n) => {
 client.on('guildMemberAdd', (member) => {
     if (member.user.bot || member.guild.id !== config.guild) return
     const token = shortcode(8)
-    const welcomemsg = `**Hej! Zweryfikuj konto** Pamiętaj, aby przed weryfikacją zerknąć na kanał \`#zasady\` i \`#informacje\` \n\n Weryfikując swoje konto oświadczasz, że masz minimum 13 lat, proszę przepisz poniższy kod. \n\n\`${token}\` \n\n\Nie możesz się zweryfikować? Skontaktuj się z administratorem serwera..`
+    const welcomemsg = `**Hej! Zweryfikuj konto** Pamiętaj, aby przed weryfikacją zerknąć na kanał \`#regulamin\` i \`#informacje\` \n\n Weryfikując swoje konto oświadczasz, że masz minimum 13 lat, proszę przepisz poniższy kod. \n\n\`${token}\` \n\n\Nie możesz się zweryfikować? Skontaktuj się z administratorem serwera..`
     console.log(`${member.user.username}#${member.user.discriminator} joined! CODE: "${token}"`)
     member.send(welcomemsg)
     member.user.token = token
@@ -39,8 +39,8 @@ client.on('message', (message) => {
             }
         }
     })
-    client.guilds.get("746030108460056718").member(message.author).addRole("746037675768938546");
-    client.guilds.get("746030108460056718").member(message.author).removeRole("746076005650792518");
+    client.guilds.get("922242038722887751").member(message.author).addRole("922282005385863190");
+    client.guilds.get("922242038722887751").member(message.author).removeRole("922283217170599957");
 })
 
 client.on('disconnect', (event) => {
