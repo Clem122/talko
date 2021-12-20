@@ -90,7 +90,7 @@ client.on('guildMemberAdd', async member => {
 	const canvas = Canvas.createCanvas(1772, 633);
 	const ctx = canvas.getContext('2d');
 
-	const background = await Canvas.loadImage('./welcome-image.png');
+	const background = await Canvas.loadImage('./welcome.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	ctx.font = '37px Genta';
@@ -109,7 +109,7 @@ client.on('guildMemberAdd', async member => {
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
 	ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
 
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
+	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome.png');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me.**  Jesteś ${member.guild.memberCount} członkiem`, attachment);
 });
