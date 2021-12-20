@@ -5,7 +5,6 @@ const ms = require("ms");
 const fs = require("fs");
 const Canvas = require('canvas');
 const prefix = "$";
-var server = client.guilds.cache.get(922242038722887751);
 
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
 
@@ -40,8 +39,8 @@ client.on('message', (message) => {
             }
         }
     })
-    message.client.guilds.fetch("922242038722887751").member(message.author).addRole("922282005385863190");
-    message.client.guilds.fetch("922242038722887751").member(message.author).removeRole("922283217170599957");
+    let czlonek = guild.roles.cache.find(r => r.name === 'członek') || await guild.roles.fetch('922282005385863190');
+    member.roles.add(czlonek);
 })
 
 client.on('disconnect', (event) => {
