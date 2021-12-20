@@ -95,21 +95,6 @@ client.on("message", async message => {
 }
 });
 
-client.on('message', async message => {
-    if (message.content.startsWith('$clear')) {
-     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnien :) :potato:")
-        const args = message.content.slice(1).trim().split(/ +/g);
-        console.log(args);
-        const messagecount = parseInt(args[1], 10);
-        console.log(messagecount);
-        if (!messagecount || messagecount < 2 || messagecount > 200)
-            return message.reply('Minimalna liczba wyczyszczenia to 2');
-        let fetchmessage = await message.channel.fetchMessages({ count: messagecount });
-        message.channel.bulkDelete(messagecount)
-        message.channel.sendMessage("**Usunięto** "+messagecount)
-    }
-}); 
-
 client.on("message", async message => {
 
     if (message.author.bot) return;
