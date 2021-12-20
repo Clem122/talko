@@ -166,7 +166,7 @@ client.on('guildMemberAdd', async member => {
     }
     //else continue or commands...
     //
-    if (message.content.toLowerCase().startsWith(`${config.PREFIX}rank`)) {
+    if (message.content.toLowerCase().startsWith(`${config.PREFIX}poziom`)) {
       //get the rankuser
       let rankuser = message.mentions.users.first() || message.author;
       client.points.ensure(`${message.guild.id}-${rankuser.id}`, {
@@ -247,10 +247,9 @@ client.on('guildMemberAdd', async member => {
       const sorted = filtered.sort((a, b) => b.points - a.points);
       const top10 = sorted.splice(0, 10);
       const embed = new Discord.MessageEmbed()
-        .setTitle(`${message.guild.name}: Leaderboard`)
+        .setTitle(`${message.guild.name}: Top 10 najwspnialszych użytkowników:`)
         .setTimestamp()
-        .setDescription(`Top 10 najwspnialszych użytkowników:`)
-        .setColor("ORANGE");
+        .setColor("BLACK");
       //set counter to 0
       let i = 0;
       //get rank 
