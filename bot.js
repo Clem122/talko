@@ -1,10 +1,9 @@
 const discord = require("discord.js")
 const config = require('./config.json')
-const bot = new Discord.Client();
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    bot.user.setActivity("jablonska kurewica")
+    clientt.user.setActivity("jablonska kurewica")
     console.log("Logged in successfully :D")
 });
 
