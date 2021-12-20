@@ -89,7 +89,7 @@ client.on('guildMemberAdd', async member => {
 	const background = await Canvas.loadImage('./welcome-image.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-	ctx.font = '35px impact';
+	ctx.font = '35px sans-serif';
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText('Witaj na serwerze', canvas.width / 3.2, canvas.height / 3.5);
 
