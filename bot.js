@@ -91,4 +91,47 @@ client.on("message", async message => {
 }
 });
 
+client.on('message', async message => {
+    if (message.content.startsWith('$clear')) {
+     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnien :) :potato:")
+        const args = message.content.slice(1).trim().split(/ +/g);
+        console.log(args);
+        const messagecount = parseInt(args[1], 10);
+        console.log(messagecount);
+        if (!messagecount || messagecount < 2 || messagecount > 200)
+            return message.reply('Minimalna liczba wyczyszczenia to 2');
+        let fetchmessage = await message.channel.fetchMessages({ count: messagecount });
+        message.channel.bulkDelete(messagecount)
+        message.channel.sendMessage("**Usunięto** "+messagecount)
+    }
+}); 
+
+client.on("message", async message => {
+
+    if (message.author.bot) return;
+
+    if (message.content.indexOf(prefix) !== 0) return;
+    
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+    // Let's go with a few common example commands! Feel free to delete or change those.
+
+    if (command === "ogloszenie") {
+        // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+        // To get the "message" itself we join the `args` back into a string with spaces: 
+        const sayMessage = args.join(" ");
+        // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+        message.delete().catch(O_o => { });
+        // And we get the bot to say the thing:
+        const embed = {
+            "title": ":bell: OGŁOSZENIE",
+            "description": `${sayMessage}`,
+            "color": 16777215
+        };
+        message.channel.send({ embed });
+}
+});
+
+
 client.login(process.env.BOT_TOKEN);
