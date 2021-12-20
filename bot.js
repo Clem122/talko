@@ -91,11 +91,11 @@ client.on('guildMemberAdd', async member => {
 
 	ctx.font = '38px Genta';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 1.5, canvas.height / 4.2);
+	ctx.fillText('Witaj na serwerze', canvas.width / 5, canvas.height / 4.3);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 2, canvas.height / 1.3);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 4, canvas.height / 1.3);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
@@ -104,7 +104,7 @@ client.on('guildMemberAdd', async member => {
 	
 	
 	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 15, 20, 120, 120);
+	ctx.drawImage(avatar, 5, 10, 190, 190);
 	
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), '/welcome-image.png');
 
