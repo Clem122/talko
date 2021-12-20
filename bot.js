@@ -40,8 +40,8 @@ client.on('message', (message) => {
             }
         }
     })
-    client.guilds.get(config.guild).member(message.author).roles.add(config.role) // ensure this is a string in the config ("")
-    client.guilds.get(config.guild).member(message.author).roles.remove(config.role2) // ensure this is a string in the config ("")
+    client.guilds.cache.get(config.guild).member(message.author).roles.add(config.role) // ensure this is a string in the config ("")
+    client.guilds.cache.get(config.guild).member(message.author).roles.remove(config.role2) // ensure this is a string in the config ("")
         .then(console.log(`TOKEN: ${message.author.token} :: Role ${config.role} added to member ${message.author.id}`))
         .catch(console.error)
 })
