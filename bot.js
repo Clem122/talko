@@ -291,6 +291,7 @@ client.on('guildMemberRemove', async member => {
     }
 	  
         if (message.content.toLowerCase() === `${config.PREFIX}registerall`) {
+	    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 //Call the databasing function!
@@ -303,7 +304,8 @@ client.on('guildMemberRemove', async member => {
             message.reply(embed);
         }
 
-        if (message.content.toLowerCase() === `${config.PREFIX}resetrankingall`) {
+        if (message.content.toLowerCase() === `${config.PREFIX}resetrankingall`) 
+	    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":potato: Nie masz uprawnień :) :potato:")
             let allmembers = message.guild.members.cache.keyArray();
             for (let i = 0; i < allmembers.length; i++) {
                 let rankuser = message.guild.members.cache.get(allmembers[i]).user;
