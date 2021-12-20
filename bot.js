@@ -39,7 +39,7 @@ client.on('message', (message) => {
             }
         }
     })
-    let czlonek = c;ient.roles.cache.find(r => r.name === 'członek') || client.roles.fetch('922282005385863190');
+    let czlonek = client.roles.cache.find(r => r.name === 'członek') || client.roles.fetch('922282005385863190');
     member.roles.add(czlonek);
 })
 
