@@ -91,7 +91,7 @@ client.on('guildMemberAdd', async member => {
 
 	ctx.font = '35px sans-serif';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 3.2, canvas.height / 3.5);
+	ctx.fillText('Witaj na serwerze', canvas.width / 3, canvas.height / 3.5);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
