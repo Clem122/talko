@@ -122,10 +122,6 @@ client.on('guildMemberAdd', async member => {
 	ctx.closePath();
 	ctx.clip();
 
-	const { body: buffer } = await snekfetch.get(member.user.displayAvatarURL);
-	const avatar = await Canvas.loadImage(buffer);
-	ctx.drawImage(avatar, 20, 25, 190, 190);
-
 	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
 
 	channel.send(`:eggplant: **${member}** **Surprise bitch! I bet you thought you'd seen the last of me**`, attachment);
