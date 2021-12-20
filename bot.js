@@ -73,7 +73,7 @@ process.on('uncaughtException', (err) => {
 
 const applyText = (canvas, text) => {
 	const ctx = canvas.getContext('2d');
-	let fontSize = 48
+	let fontSize = 35
 
 	do {
 		ctx.font = `${fontSize -= 10}px Genta`;
@@ -94,11 +94,11 @@ client.on('guildMemberAdd', async member => {
 
 	ctx.font = '37px Genta';
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Witaj na serwerze', canvas.width / 3.1, canvas.height / 3.5);
+	ctx.fillText('Witaj na serwerze', canvas.width / 2.5, canvas.height / 3.5);
 
 	ctx.font = applyText(canvas, `${member.displayName}!`);
 	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 3.1, canvas.height / 1.7);
+	ctx.fillText(`${member.displayName}!`, canvas.width / 2.5, canvas.height / 1.7);
 
 	ctx.beginPath();
 	ctx.arc(120, 125, 90, 0, Math.PI * 2, true);
@@ -221,7 +221,7 @@ client.on('guildMemberAdd', async member => {
         .setLevelColor(color, "COLOR")
         .setUsername(rankuser.username, color)
         .setRank(Number(i), "Twoja ranga", true)
-        .setLevel(Number(client.points.get(key, `level`)), "Poziomㅤ", true)
+        .setLevel(Number(client.points.get(key, `level`)), "Poziom", true)
         .setDiscriminator(rankuser.discriminator, color);
       rank.build()
         .then(async data => {
