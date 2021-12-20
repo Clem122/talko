@@ -319,7 +319,7 @@ client.on('guildMemberRemove', async member => {
             .setColor(embedcolor)
             .setDescription(`Successfully resetted everyone`)
             message.reply(embed);
-        }
+        })
 
   })
   function delay(delayInms) {
@@ -329,7 +329,6 @@ client.on('guildMemberRemove', async member => {
       }, delayInms);
     });
   }
-)
 
 client.on("ready", () => {
     client.user.setStatus("dnd");
