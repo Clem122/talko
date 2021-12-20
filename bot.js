@@ -321,7 +321,6 @@ client.on('guildMemberRemove', async member => {
             message.reply(embed);
         })
 
-  )
   function delay(delayInms) {
     return new Promise(resolve => {
       setTimeout(() => {
