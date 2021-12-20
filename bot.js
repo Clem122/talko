@@ -30,45 +30,6 @@ client.on('guildMemberAdd', (member) => {
     member.user.token = token
 })
 
-const verifymsg = '{token}'
-
-client.on('message', (message) => {
-    if (message.author.bot || !message.author.token || message.channel.type !== `dm`) return
-    if (message.content !== (verifymsg.replace('{token}', message.author.token))) return
-    message.channel.send({
-        embed: {
-            color: Math.floor(Math.random() * (0xFFFFFF + 1)),
-            description: completemsg,
-            timestamp: new Date(),
-            footer: {
-                text: `Przepisując kod automatycznie zaakceptowałeś regulamin serwera.`
-            }
-        }
-    })
-    client.guilds.get("746030108460056718").member(message.author).addRole("922282005385863190");
-})
-
-client.on('disconnect', (event) => {
-    setTimeout(() => client.destroy().then(() => client.login(config.token)), 10000)
-    console.log(`[DISCONNECT] Notice: Disconnected from gateway with code ${event.code} - Attempting reconnect.`)
-})
-
-client.on('reconnecting', () => {
-    console.log(`[NOTICE] ReconnectAction: Reconnecting to Discord...`)
-})
-
-client.on('error', console.error)
-client.on('warn', console.warn)
-
-process.on('unhandledRejection', (error) => {
-    console.error(`Uncaught Promise Error: \n${error.stack}`)
-})
-
-process.on('uncaughtException', (err) => {
-    let errmsg = (err ? err.stack || err : '').toString().replace(new RegExp(`${__dirname}/`, 'g'), './')
-    console.error(errmsg)
-})
-
 client.on("ready", () => {
     client.user.setStatus("dnd");
 });
