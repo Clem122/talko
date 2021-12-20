@@ -329,6 +329,7 @@ client.on('guildMemberRemove', async member => {
       }, delayInms);
     });
   }
+}
 
 client.on("ready", () => {
     client.user.setStatus("dnd");
