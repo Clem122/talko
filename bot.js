@@ -335,4 +335,20 @@ client.on("message", async message => {
 }
 });
 
+const serverStats = {
+    guildID: '922242038722887751',
+    totalUsersID: '922641537278554144'
+}
+
+client.on('guildMemberAdd', member => {
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`» Użytkowników: ${member.guild.memberCount}`);
+    client.channels.get(serverStats.newUser).setName(`👋 ${member.displayName}`);
+ });
+
+client.on('guildMemberRemove', member => {
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`» Użytkowników: ${member.guild.memberCount}`);
+});
+
 client.login(process.env.BOT_TOKEN);
