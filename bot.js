@@ -343,7 +343,6 @@ const serverStats = {
 client.on('guildMemberAdd', member => {
     if (member.guild.id !== serverStats.guildID) return;
     client.channels.cache.get(serverStats.totalUsersID).setName(`🎉 » Użytkowników: ${member.guild.memberCount}`);
-    client.channels.cache.get(serverStats.newUser).setName(`👋 ${member.displayName}`);
  });
 
 client.on('guildMemberRemove', member => {
