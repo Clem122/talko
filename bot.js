@@ -290,6 +290,7 @@ client.on('guildMemberRemove', async member => {
       return message.channel.send(embed);
     }
 
+  })
   function delay(delayInms) {
     return new Promise(resolve => {
       setTimeout(() => {
@@ -297,6 +298,7 @@ client.on('guildMemberRemove', async member => {
       }, delayInms);
     });
   }
+}
 
 client.on("ready", () => {
     client.user.setStatus("dnd");
