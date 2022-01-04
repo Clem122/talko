@@ -447,5 +447,40 @@ let button2 = new buttonClient.MessageButton()
 }
 	
 });
+
+client.on("message", (message) => {
+	if(message.content === "!button") {
+	/* Generate a Cute Embed :3 */
+	 const embed = new discord.MessageEmbed()
+	 .setTitle("Do you like me?")
+	 .setColor("GREEN");
+ 
+    /* Generate 1st Button with "Yes" lable on it */
+	 const button1 = new buttonClient.MessageButton()
+	 .setLabel("Yes")
+	 .setStyle("green")
+	 .setID("yes")
+
+   /* Generate 2nd Button with "No" label on it */
+	 const button2 = new buttonClient.MessageButton()
+	 .setLabel("No")
+	 .setStyle("red")
+	 .setID("no")
+
+   /* Generate 3rd Link Button */
+   const button3 = new buttonClient.MessageButton()
+   .setLabel("Join me on OnlyFans")
+   .setURL("https://withwin.in/dbd")
+
+     
+     /* Send Message with button */
+     buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2], [button3] ]})
+ }
+})
+
+
+/* Listen to buttons event with their ID */
+buttonClient.on("yes", (inta) => inta.message.reply("Thanks, I love you :3"))
+buttonClient.on("no", (inta) => inta.message.reply("WTF, you are the worst person, i have ever seen"))
 	
 client.login(process.env.BOT_TOKEN);
