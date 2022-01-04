@@ -407,24 +407,5 @@ client.on("message", async message => {
         message.channel.send({ embed });
 }
 });
-
-    const suggestinChannel = client.channels.cache.get('927905331474989146') // Channel For Suggestion
-    client.on('message', message => {
-        if(message.channel === suggestinChannel) {
-            if(message.author.bot) return // Doesnot Delete BOTs Messages
-            message.delete() // Delete Original Message Sent By User
-
-            const embed = new MessageEmbed()
-            .setColor('RANDOM')
-            .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic:true }))
-            .setDescription(`${message.content}`)
-            .setFooter('Masz jakąś propozycje odnośnie serwera? Napisz ją na tym kanale.')
-            message.channel.send(embed).then(message => { // Reactions
-                message.react("👍") // Change Emoji
-                message.react("👎") // Change Emoji
-            })
-        }
-    })
-};
 	
 client.login(process.env.BOT_TOKEN);
