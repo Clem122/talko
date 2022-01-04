@@ -442,7 +442,6 @@ if (command == "propozycja") {
         embedMessage.react("👍");
         embedMessage.react("👎");
     });
-    message.author.send("**- Dziękujemy za oddanie propozycji** :heart:");
 
     message.delete();
   }
