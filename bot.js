@@ -438,19 +438,12 @@ if (command == "propozycja") {
             "description": `${sayMessage}`,
             "color": 11041206
         };
-    const button = new Discord.MessageActionRow().addComponents(
-
-        new Discord.MessageButton()
-        .setCustomId('suggestion_accept')
-        .setLabel('Accept')
-        .setStyle('SUCCESS'),
-
-        new Discord.MessageButton()
-        .setCustomId('suggestion_deny')
-        .setLabel('Deny')
-        .setStyle('DANGER')
-
-    );
+let button = new disbut.MessageButton()
+  .setStyle('green') //default: blurple
+  .setLabel('Akceptuj') //default: NO_LABEL_PROVIDED
+  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
+  .setDisabled(); //disables the button | default: false
+	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
     srakaguwno.send({embed, button}).then(embedMessage => {
         embedMessage.react("👍");
