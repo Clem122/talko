@@ -435,7 +435,7 @@ let button = new disbut.MessageButton()
   .setID("click")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
+    srakaguwno.send({embed, button, button2}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
 	    buttonClient.on("click", (inta) => inta.reply("guwno"))
