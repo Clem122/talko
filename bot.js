@@ -439,8 +439,7 @@ if (command == "propozycja") {
 	 .setID("no")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed}).then(embedMessage => {
-	buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2] ]})
+	buttonClient.send(null, { channel: srakaguwno, embed, buttons: [ [button1, button2] ]})
         embedMessage.react("👍");
         embedMessage.react("👎");
 	    buttonClient.on("yes", (inta) => inta.message.reply("guwno"))
