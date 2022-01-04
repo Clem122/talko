@@ -405,37 +405,57 @@ client.on("message", async message => {
 });
 
 client.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.author.dm) return;
+   const suggestionsButtonRow = new Discord.MessageActionRow().addComponents(
 
-  let prefix = config.prefix
-  let messageArray = message.content.split("  ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
+        new Discord.MessageButton()
+        .setCustomId('suggestion_accept')
+        .setLabel('Zaakceptuj')
+        .setStyle('SUCCESS'),
 
-  if(message.content.includes(`${prefix}propozycja`)) {
-      let usersuggestion = message.content.replace(`${prefix}propozycja`,"")
+        new Discord.MessageButton()
+        .setCustomId('suggestion_deny')
+        .setLabel('Odrzuć')
+        .setStyle('DANGER')
 
+    );
 
-    client.fetchUser(message.author).then(myUser => {
-      let suggestEmbed = new Discord.RichEmbed()
-      .setAuthor(message.member.user.tag, (myUser.avatarURL))
-      .setTitle('Propozycja')
-      .setDescription("Jeśli chcesz zaproponować swój pomysł wpisz $propozycja (twoja wiadomość)")
-      .setColor("#4287f5")
-      .addField("Propozycja", usersuggestion)
-      .addField("Zaproponował: ", message.author)
+    if (command === "propozycja") {
 
-      const suggestchannel = client.channels.cache.get('id', '922278291480641576')
+        if (args) {
 
-      suggestchannel.send(suggestEmbed)
-      .then(function (suggestchannel) {
-        suggestchannel.react('✅');
-        suggestchannel.react('❌');
-      });
-      return;
-    });
-  }
+            let suggestionEmbed = new Discord.MessageEmbed()
+                .setAuthor(`Propozycja od: ${message.author.username}`, message.author.displayAvatarURL())
+                .setDescription(`\`\`\`${args.join(" ")}\`\`\``)
+
+            try {
+
+                const sraka2 = message.guild.channels.cache.find(ch => ch.name === 'vent');
+                let suggestionMessage = await sraka2.send({
+                    embeds: [suggestionEmbed],
+                    components: [
+                        suggestionsButtonRow
+                    ]
+                })
+
+                await suggestionMessage.react('👍')
+                await suggestionMessage.react('👎')
+
+            } catch (err) {
+                return console.log(err)
+            }
+
+        } else {
+
+            return message.channel.send("❌ d")
+
+        }
+
+    } else {
+
+        return message.channel.send("❌ d")
+
+    }
+
 });
 
 client.login(process.env.BOT_TOKEN);
