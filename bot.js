@@ -10,6 +10,7 @@ const canvacord = require("canvacord");
 const snekfetch = require('snekfetch');
 const embedcolor = config.embedcolor;
 const disbut = require('discord-buttons');
+disbut(client);
 const verified_role_id = "922282005385863190";
 const prefix = "$";
 
@@ -405,31 +406,15 @@ client.on("message", async message => {
 }
 });
 
-client.on("message", async message => {
+client.on('message', async message => {
+   if (message.content === "test") {
+      const button = new MessageButton()
+         .setLabel("test")
+         .setStyle("green")
+         .setID("btn1")
 
-    if (message.author.bot) return;
-
-    if (message.content.indexOf(prefix) !== 0) return;
-    
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-
-    // Let's go with a few common example commands! Feel free to delete or change those.
-
-    if (command === "test") {
-        // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
-        // To get the "message" itself we join the `args` back into a string with spaces: 
-        const sayMessage = args.join(" ");
-        // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
-        message.delete().catch(O_o => { });
-        // And we get the bot to say the thing:
-	const button = new disbut.MessageButton()
-  .setStyle('red') //default: blurple
-  .setLabel('My First Button!') //default: NO_LABEL_PROVIDED
-  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  .setDisabled(); //disables the button | default: false
-        message.channel.send({ button });
-}
-});
+      message.channel.send("test components", button)
+   }
+})
 
 client.login(process.env.BOT_TOKEN);
