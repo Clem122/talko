@@ -358,7 +358,7 @@ client.on("message", async message => {
     
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    let sraka = client.convertChannel(message.guild, client.config.suggestion.channelid)
+    const sraka = client.guild.channels.cache.find(ch => ch.name === 'vent');
 
     // Let's go with a few common example commands! Feel free to delete or change those.
 
