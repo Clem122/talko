@@ -418,23 +418,23 @@ client.on('message', message => {
   let args = message.content.split(" ").slice(1);
 
 if (command == "propozycja") {
-	const sayMessage = args.join(" ");
     if (message.author.bot) return;
       if(!message.channel.guild) return message.reply('ta');
-        const embed = {
-  .setTitle("Od " + message.author.username);
-  .setThumbnail(message.author.avatarURL);
-  .setAuthor("PROPOZYCJA");
-    .setDescription(args.join("  "));
-    .setColor(12248579);
+    const embed = {
+  .setTitle("Od " + message.author.username)
+  .setThumbnail(message.author.avatarURL)
+  .setAuthor("PROPOZYCJA")
+    .setDescription(args.join("  "))
+    .setColor(12248579)
       .setFooter(" ")
-        };
-	
-     const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed}).then(embedMessage => {
+};
+    message.guild.channels.find('name','propozycje').send(say).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-	      }
+    });
+
+    message.delete();
+  }
 
 
 });
