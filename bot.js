@@ -454,6 +454,7 @@ client.on('message', (message) => {
 
 			message.channel.send(`RowsTest 2`, { components: rows });
 		}
+	}
 	});
 
 client.login(process.env.BOT_TOKEN);
