@@ -370,7 +370,7 @@ if (command == "wyznaj") {
     .setDescription(args.join("  "))
     .setColor(7419530)
       .setFooter(" ")
-    message.guild.channels.find('name','vent').send(say).then(embedMessage => {
+    message.guild.channels.cache.find('name','vent').send(say).then(embedMessage => {
     });
     message.author.send("**- Twoje wyznanie zostało wysłane** :heart:");
 
