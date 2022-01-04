@@ -441,6 +441,6 @@ let button = new disbut.MessageButton()
   })
 
 
-});
+};
 	
 client.login(process.env.BOT_TOKEN);
