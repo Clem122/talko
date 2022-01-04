@@ -459,7 +459,7 @@ client.on("message", (message) => {
 
   if (command == "propozycja") {
 	/* Generate a Cute Embed :3 */
-	 const embed = new discord.MessageEmbed()
+	 const embed = new Discord.MessageEmbed()
   .setTitle("Od " + message.author.username)
   .setThumbnail(message.author.avatarURL)
   .setAuthor("PROPOZYCJA")
