@@ -439,55 +439,6 @@ if (command == "propozycja") {
 	 .setID("no")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-	buttonClient.send(null, { channel: srakaguwno, embed, buttons: [ [button1, button2] ]})
-	    buttonClient.on("yes", (inta) => embed = inta.message.embeds[0].setColor("#00ff00"));
-	    buttonClient.on("no", (inta) => inta.message.reply("guwno2")) 
 
-
-}
-	
-});
-
-client.on("message", (message) => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "propozycja") {
-	/* Generate a Cute Embed :3 */
-	 const embed = new Discord.MessageEmbed()
-  .setTitle("Od " + message.author.username)
-  .setThumbnail(message.author.avatarURL)
-  .setAuthor("PROPOZYCJA")
-    .setDescription(args.join("  "))
-    .setColor(12248579)
-      .setFooter(" ")
- 
-    /* Generate 1st Button with "Yes" lable on it */
-	 const button1 = new buttonClient.MessageButton()
-	 .setLabel("Yes")
-	 .setStyle("green")
-	 .setID("yes")
-
-   /* Generate 2nd Button with "No" label on it */
-	 const button2 = new buttonClient.MessageButton()
-	 .setLabel("No")
-	 .setStyle("red")
-	 .setID("no")
-
-     
-     /* Send Message with button */
-     buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2] ]})
- }
-})
-
-
-/* Listen to buttons event with their ID */
-buttonClient.on("yes", (inta) => inta.message.reply("Thanks, I love you :3"))
-buttonClient.on("no", (inta) => inta.message.reply("WTF, you are the worst person, i have ever seen"))
 	
 client.login(process.env.BOT_TOKEN);
