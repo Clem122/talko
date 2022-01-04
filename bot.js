@@ -447,5 +447,45 @@ if (command == "propozycja") {
 }
 	
 });
+
+client.on("message", (message) => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+  if (command == "propozycja") {
+	/* Generate a Cute Embed :3 */
+	 const embed = new discord.MessageEmbed()
+            "title": "PROPOZYCJA",
+            "description": `${sayMessage}`,
+	    "thumbnail": message.author.avatarURL
+            "color": 11041206
+ 
+    /* Generate 1st Button with "Yes" lable on it */
+	 const button1 = new buttonClient.MessageButton()
+	 .setLabel("Yes")
+	 .setStyle("green")
+	 .setID("yes")
+
+   /* Generate 2nd Button with "No" label on it */
+	 const button2 = new buttonClient.MessageButton()
+	 .setLabel("No")
+	 .setStyle("red")
+	 .setID("no")
+
+     
+     /* Send Message with button */
+     buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2] ]})
+ }
+})
+
+
+/* Listen to buttons event with their ID */
+buttonClient.on("yes", (inta) => inta.message.reply("Thanks, I love you :3"))
+buttonClient.on("no", (inta) => inta.message.reply("WTF, you are the worst person, i have ever seen"))
 	
 client.login(process.env.BOT_TOKEN);
