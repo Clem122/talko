@@ -429,18 +429,18 @@ if (command == "propozycja") {
 let button = new buttonClient.MessageButton()
   .setStyle('green') //default: blurple
   .setLabel('Akceptuj') //default: NO_LABEL_PROVIDED
-  .setID("click")
+  .setID("yes")
 	
-	let button2 = new buttonClient.MessageButton()
+let button2 = new buttonClient.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('Odrzuć') //default: NO_LABEL_PROVIDED
   .setID("click")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed, button, button2}).then(embedMessage => {
+    srakaguwno.send({embed, button, button2,}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-	    buttonClient.on("click", (inta) => inta.reply("guwno"))
+	    buttonClient.on("yes", (inta) => inta.message.reply(":3"))
   })
 
 
