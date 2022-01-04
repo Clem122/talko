@@ -358,7 +358,7 @@ client.on("message", async message => {
     
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    const sraka = member.guild.channels.cache.find(ch => ch.name === 'vent');
+    const sraka = message.guild.channels.cache.find(ch => ch.name === 'vent');
 
     // Let's go with a few common example commands! Feel free to delete or change those.
 
@@ -376,6 +376,32 @@ client.on("message", async message => {
         };
 	message.delete();
         sraka.send({ embed });
+}
+});
+
+client.on("message", async message => {
+
+    if (message.author.bot) return;
+
+    if (message.content.indexOf(prefix) !== 0) return;
+    
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+    // Let's go with a few common example commands! Feel free to delete or change those.
+
+    if (command === "guwnotalko") {
+        // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+        // To get the "message" itself we join the `args` back into a string with spaces: 
+        const sayMessage = args.join(" ");
+        // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+        message.delete().catch(O_o => { });
+        // And we get the bot to say the thing:
+        const embed = {
+            "description": `${sayMessage}`,
+            "color": 11041206
+        };
+        message.channel.send({ embed });
 }
 });
 
