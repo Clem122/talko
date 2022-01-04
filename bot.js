@@ -11,6 +11,8 @@ const snekfetch = require('snekfetch');
 const embedcolor = config.embedcolor;
 const discordButtons = require("discord-buttons-plugin");
 const buttonClient = new discordButtons(client)
+const disbut = require('discord-buttons');
+disbut(client);
 const verified_role_id = "922282005385863190";
 const prefix = "$";
 
