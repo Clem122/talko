@@ -438,7 +438,7 @@ let button = new disbut.MessageButton()
     srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-  }
+  })
 
 
 });
