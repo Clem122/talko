@@ -9,6 +9,7 @@ client.points = new Enmap({ name: "points" });
 const canvacord = require("canvacord");
 const snekfetch = require('snekfetch');
 const embedcolor = config.embedcolor;
+const disbut = require('discord-buttons');
 const verified_role_id = "922282005385863190";
 const prefix = "$";
 
@@ -404,22 +405,55 @@ client.on("message", async message => {
 }
 });
 
-const { MessageActionRow, MessageButton } = require('discord.js');
+client.on('message', (message) => {
 
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+    if (message.author.bot || message.channel.type != "text") return;
+    if (!message.content.startsWith(config.prefix)) return;
+	
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift();
 
-	if (interaction.commandName === 'test') {
-		const row = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('primary')
-					.setLabel('Primary')
-					.setStyle('PRIMARY'),
-			);
+	if (command == "test") {
 
-		await interaction.reply({ content: 'sraka', components: [row] });
+		for (var i = 1; i < 1000; i++) {
+			const btn1 = new disbut.MessageButton()
+				.setStyle('url')
+				.setLabel('0') 
+				.setURL('https://npmjs.com/discord-buttons')
+				.setDisabled(false); 
+
+			const row = new disbut.MessageActionRow();
+
+			for (var k = 0; k < i; k++) {
+				btn1.setLabel(`${k}`);
+				row.addComponent(btn1);
+			}
+				
+			message.channel.send(`RowsTest`, { component: row });
+		}
 	}
-});
+
+	if (command == "test2") {
+
+		for (var i = 1; i < 1000; i++) {
+			
+			const btn1 = new disbut.MessageButton()
+				.setStyle('url')
+				.setLabel(`${i}`)
+				.setURL('https://npmjs.com/discord-buttons')
+				.setDisabled(false); 
+
+			const row = new disbut.MessageActionRow()
+					.addComponent(btn1);
+
+			var rows = [];
+
+			for (var k = 1; k <= i; k++) {
+				rows.push(row);
+			}
+
+			message.channel.send(`RowsTest 2`, { components: rows });
+		}
+	}
 
 client.login(process.env.BOT_TOKEN);
