@@ -420,4 +420,32 @@ message.channel.send('Hey, i am powered by https://npmjs.com/discord-buttons', b
    }
 })
 
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+if (command == "propozycja") {
+    if (message.author.bot) return;
+      if(!message.channel.guild) return message.reply('ta');
+        const embed = {
+            "title": "test",
+            "description": `${sayMessage}`,
+            "color": 11041206
+        };
+        const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
+    srakaguwno.send({ embed });
+        embedMessage.react("👍");
+        embedMessage.react("👎");
+    });
+    message.author.send("**- Dziękujemy za oddanie propozycji** :heart:");
+
+    message.delete();
+}
+});
+
 client.login(process.env.BOT_TOKEN);
