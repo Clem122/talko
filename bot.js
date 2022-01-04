@@ -466,7 +466,5 @@ let button = new disbut.MessageButton()
                             embeds: [embed],
                         });
 
-});
-
 
 client.login(process.env.BOT_TOKEN);
