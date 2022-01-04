@@ -438,9 +438,23 @@ if (command == "propozycja") {
             "description": `${sayMessage}`,
             "color": 11041206
         };
+    const button = new Discord.MessageActionRow().addComponents(
+
+        new Discord.MessageButton()
+        .setCustomId('suggestion_accept')
+        .setLabel('Accept')
+        .setStyle('SUCCESS'),
+
+        new Discord.MessageButton()
+        .setCustomId('suggestion_deny')
+        .setLabel('Deny')
+        .setStyle('DANGER')
+
+    );
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed}).then(embedMessage => {
-    embedMessage.react("👍");
+    srakaguwno.send({embed, button}).then(embedMessage => {
+        embedMessage.react("👍");
+        embedMessage.react("👎");
 });
   }
 
