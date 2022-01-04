@@ -413,7 +413,7 @@ client.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(message.content.includes(`${prefix}suggest`)) {
+  if(message.content.includes(`${prefix}propozycja`)) {
       let usersuggestion = message.content.replace(`${prefix}propozycja`,"")
 
 
