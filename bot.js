@@ -304,7 +304,7 @@ client.on("ready", () => {
 });
 
 client.on('ready', () => {
-    client.user.setActivity("jablonska kurewica")
+    client.user.setActivity("Young and Beautiful")
     console.log("Logged in successfully :D")
 })
 
@@ -348,6 +348,36 @@ client.on('guildMemberAdd', member => {
 client.on('guildMemberRemove', member => {
     if (member.guild.id !== serverStats.guildID) return;
     client.channels.cache.get(serverStats.totalUsersID).setName(`🎉 » Użytkowników: ${member.guild.memberCount}`);
+});
+
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+
+
+if (command == "wyznaj") {
+    if (message.author.bot) return;
+      if(!message.channel.guild) return message.reply('ta');
+    let say = new Discord.RichEmbed()
+  .setTitle(" " + message.author.username)
+  .setAuthor("Wyznanie")
+    .setDescription(args.join("  "))
+    .setColor(7419530)
+      .setFooter(" ")
+    message.guild.channels.find('name','vent').send(say).then(embedMessage => {
+    });
+    message.author.send("**- Twoje wyznanie zostało wysłane** :heart:");
+
+    message.delete();
+  }
+
+
 });
 
 client.login(process.env.BOT_TOKEN);
