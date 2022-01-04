@@ -464,7 +464,9 @@ let button = new disbut.MessageButton()
                         embed = interaction.message.embeds[0].setColor("#ff0000");
                         interaction.message.edit({
                             embeds: [embed],
-                        });
+  }
 
+
+});
 
 client.login(process.env.BOT_TOKEN);
