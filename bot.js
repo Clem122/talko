@@ -441,8 +441,6 @@ let button = new disbut.MessageButton()
 });
   }
 	
-	    await interaction.deferUpdate();
-
     if (interaction.isButton()) {
 
         let interactionCategory = interaction.customId.toString().split("_");
@@ -467,17 +465,6 @@ let button = new disbut.MessageButton()
                         await interaction.message.edit({
                             embeds: [embed],
                         });
-
-
-                        break
-
-                }
-
-                break
-        }
-
-    }
-};
 
 });
 
