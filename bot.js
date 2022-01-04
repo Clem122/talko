@@ -460,10 +460,12 @@ client.on("message", (message) => {
   if (command == "propozycja") {
 	/* Generate a Cute Embed :3 */
 	 const embed = new discord.MessageEmbed()
-            "title": "PROPOZYCJA",
-            "description": `${sayMessage}`,
-	    "thumbnail": message.author.avatarURL
-            "color": 11041206
+  .setTitle("Od " + message.author.username)
+  .setThumbnail(message.author.avatarURL)
+  .setAuthor("PROPOZYCJA")
+    .setDescription(args.join("  "))
+    .setColor(12248579)
+      .setFooter(" ")
  
     /* Generate 1st Button with "Yes" lable on it */
 	 const button1 = new buttonClient.MessageButton()
