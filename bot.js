@@ -430,6 +430,7 @@ client.on('message', message => {
   let args = message.content.split(" ").slice(1);
 
 if (command == "propozycja") {
+	const sayMessage = args.join(" ");
     if (message.author.bot) return;
       if(!message.channel.guild) return message.reply('ta');
         const embed = {
