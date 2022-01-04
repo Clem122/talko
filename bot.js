@@ -455,6 +455,95 @@ client.on('message', (message) => {
 			message.channel.send(`RowsTest 2`, { components: rows });
 		}
 	}
-	});
+
+	if (command == "button") {
+		const btn = new disbut.MessageButton()
+			.setStyle('red')
+			.setID('click_to_function') 
+			.setEmoji('785062885952192512')
+			.setLabel('Demo Red Button') 
+			//.setURL('https://npmjs.com/discord-buttons') // Требуется .setStyle('url') и удаление .setID()
+			.setDisabled(false); 
+
+		message.channel.send(`Demo Red Button`, { component: btn });
+	}
+
+	if (command == "row") {
+		const btn1 = new disbut.MessageButton()
+			.setStyle('blurple')
+			.setID('click_to_function_in_row') 
+			.setEmoji("🍕")
+			.setLabel('Button 1 in row') 
+			.setDisabled(false); 
+			
+		const btn2 = new disbut.MessageButton()
+			.setStyle('url')
+			.setLabel('URL button in row') 
+			.setURL('https://npmjs.com/discord-buttons')
+			.setDisabled(false); 
+			
+		const row = new disbut.MessageActionRow()
+			.addComponent(btn1)
+			.addComponent(btn2);
+
+		message.channel.send(`Demo Row of Buttons`, { component: row });
+	}
+
+	if (command == "rows") {
+		const btn1 = new disbut.MessageButton()
+			.setStyle('grey')
+			.setID('click_to_function_in_row_1_2') 
+			.setLabel('Button 1 in row 1') 
+			.setDisabled(false); 
+			
+		const btn2 = new disbut.MessageButton()
+			.setStyle('url')
+			.setLabel('URL button in row 1') 
+			.setURL('https://npmjs.com/discord-buttons')
+			.setDisabled(false); 
+
+		const btn12 = new disbut.MessageButton()
+			.setStyle('green')
+			.setID('click_to_function_in_row_2_2') 
+			.setLabel('Button 1 in row 2') 
+			.setDisabled(false); 
+			
+		const btn22 = new disbut.MessageButton()
+			.setStyle('url')
+			.setLabel('URL button in row 2') 
+			.setURL('https://npmjs.com/discord-buttons')
+			.setDisabled(false); 
+			
+		const row1 = new disbut.MessageActionRow()
+			.addComponent(btn1)
+			.addComponent(btn2);
+		
+		const row2 = new disbut.MessageActionRow()
+			.addComponent(btn12)
+			.addComponent(btn22);
+
+		message.channel.send(`Demo Row of Buttons`, { components: [row1, row2] });
+
+	}
+
+});
+
+client.on('clickButton', async (button) => {
+	if (button.id == "click_to_function") {
+		button.reply.send('On Red Button click', { ephemeral: true });
+	} else if (button.id == "click_to_function_in_row") {
+		button.think(true);
+		client.setTimeout(() => {
+			const embed = new Discord.MessageEmbed()
+				.setTitle("On Row first Button click");
+			button.channel.send(embed);
+		}, 1000 * 10);
+	} else if (button.id == "click_to_function_in_row_1_2") {
+		button.defer();
+		button.message.channel.send('On Row 1 first Button click');
+	} else if (button.id == "click_to_function_in_row_2_2") {
+		button.reply.send('On Row 2 first Button click');
+	}
+});
 
 client.login(process.env.BOT_TOKEN);
