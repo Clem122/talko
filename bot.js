@@ -11,6 +11,8 @@ const snekfetch = require('snekfetch');
 const embedcolor = config.embedcolor;
 const verified_role_id = "922282005385863190";
 const prefix = "$";
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
 
 const completemsg = `Zostałeś pomyślnie zweryfikowany. Dziękujemy! \nTeraz możesz udać się na serwer i wybrać rangi które cię interesują. Nie zapomnij napisać Cześć do wszystkich!`
 
