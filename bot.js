@@ -438,26 +438,11 @@ let button = new disbut.MessageButton()
     srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
+	    buttonClient.on("click", (inta) => inta.reply("Thanks for clicking me :3"))
   })
 
 
 }
-	 if (interaction.isButton()) {
-
-        let interactionCategory = interaction.customId.toString().split("_");
-
-        switch (interactionCategory[0]) {
-            case "suggestion":
-                if (!interaction.member.permissions.has("ADMINISTRATOR")) return;
-
-                switch (interactionCategory[1]) {
-
-                    case "accept":
-
-                        embed = interaction.message.embeds[0].setColor("#00ff00");
-                        interaction.message.edit({
-                            embeds: [embed],
-                        }
 	
 });
 	
