@@ -404,4 +404,38 @@ client.on("message", async message => {
 }
 });
 
+client.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.author.dm) return;
+
+  let prefix = config.prefix
+  let messageArray = message.content.split("  ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(message.content.includes(`${prefix}suggest`)) {
+      let usersuggestion = message.content.replace(`${prefix}propozycja`,"")
+
+
+    client.fetchUser(message.author).then(myUser => {
+      let suggestEmbed = new Discord.RichEmbed()
+      .setAuthor(message.member.user.tag, (myUser.avatarURL))
+      .setTitle('Propozycja')
+      .setDescription("Jeśli chcesz zaproponować swój pomysł wpisz $propozycja (twoja wiadomość)")
+      .setColor("#4287f5")
+      .addField("Propozycja", usersuggestion)
+      .addField("Zaproponował: ", message.author)
+
+      const suggestchannel = client.channels.cache.get('id', '922278291480641576')
+
+      suggestchannel.send(suggestEmbed)
+      .then(function (suggestchannel) {
+        suggestchannel.react('✅');
+        suggestchannel.react('❌');
+      });
+      return;
+    });
+  }
+});
+
 client.login(process.env.BOT_TOKEN);
