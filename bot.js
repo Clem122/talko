@@ -439,7 +439,9 @@ if (command == "propozycja") {
             "color": 11041206
         };
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({ embed });
+    srakaguwno.send({embed}).then(embedMessage => {
+    embedMessage.react("👍");
+});
   }
 
 
