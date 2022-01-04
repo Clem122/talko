@@ -426,12 +426,12 @@ if (command == "propozycja") {
             "description": `${sayMessage}`,
             "color": 11041206
         };
-let button = new disbut.MessageButton()
+let button = new buttonClient.MessageButton()
   .setStyle('green') //default: blurple
   .setLabel('Akceptuj') //default: NO_LABEL_PROVIDED
   .setID("click")
 	
-	let button2 = new disbut.MessageButton()
+	let button2 = new buttonClient.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('Odrzuć') //default: NO_LABEL_PROVIDED
   .setID("click")
