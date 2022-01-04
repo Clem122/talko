@@ -428,20 +428,21 @@ if (command == "propozycja") {
         };
     /* Generate 1st Button with "Yes" lable on it */
 	 const button1 = new buttonClient.MessageButton()
-	 .setLabel("Yes")
+	 .setLabel("Akceptuj")
 	 .setStyle("green")
 	 .setID("yes")
 
    /* Generate 2nd Button with "No" label on it */
 	 const button2 = new buttonClient.MessageButton()
-	 .setLabel("No")
+	 .setLabel("Odrzuć")
 	 .setStyle("red")
 	 .setID("no")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed, button1, button2,}).then(embedMessage => {
+    srakaguwno.send({embed}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
+	    buttonClient.send(null, { channel: message.channel.id, buttons: [ [button1, button2] ]})
 	    buttonClient.on("yes", (inta) => inta.message.reply("guwno"))
 	    buttonClient.on("no", (inta) => inta.message.reply("guwno2"))
   })
