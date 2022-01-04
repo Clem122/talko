@@ -422,23 +422,21 @@ if (command == "propozycja") {
     if (message.author.bot) return;
       if(!message.channel.guild) return message.reply('ta');
         const embed = {
-            "title": "test",
-            "description": `${sayMessage}`,
-            "color": 11041206
+  .setTitle("Od " + message.author.username);
+  .setThumbnail(message.author.avatarURL);
+  .setAuthor("PROPOZYCJA");
+    .setDescription(args.join("  "));
+    .setColor(12248579);
+      .setFooter(" ")
         };
-    /* Generate 1st Button with "Yes" lable on it */
-	 const button1 = new buttonClient.MessageButton()
-	 .setLabel("Akceptuj")
-	 .setStyle("green")
-	 .setID("yes")
-
-   /* Generate 2nd Button with "No" label on it */
-	 const button2 = new buttonClient.MessageButton()
-	 .setLabel("Odrzuć")
-	 .setStyle("red")
-	 .setID("no")
 	
-        const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
+     const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
+    srakaguwno.send({embed}).then(embedMessage => {
+        embedMessage.react("👍");
+        embedMessage.react("👎");
+	      }
 
+
+});
 	
 client.login(process.env.BOT_TOKEN);
