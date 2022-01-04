@@ -440,9 +440,9 @@ if (command == "propozycja") {
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
 	buttonClient.send(null, { channel: srakaguwno, embed, buttons: [ [button1, button2] ]})
-        embedMessage.react("👍");
-        embedMessage.react("👎");
 	    buttonClient.on("yes", (inta) => embed = inta.message.embeds[0].setColor("#00ff00"));
+	        embedMessage.react("👍");
+        	embedMessage.react("👎");
 	    buttonClient.on("no", (inta) => inta.message.reply("guwno2")) 
 
 
