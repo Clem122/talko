@@ -432,7 +432,7 @@ let button = new disbut.MessageButton()
 	let button2 = new disbut.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('Odrzuć') //default: NO_LABEL_PROVIDED
-  .setCustomId('suggestion_deny')
+  .setID("click")
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
     srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
