@@ -10,7 +10,7 @@ const canvacord = require("canvacord");
 const snekfetch = require('snekfetch');
 const embedcolor = config.embedcolor;
 const discordButtons = require("discord-buttons-plugin");
-const buttonClient = new discordButtons(client)
+const buttonClient = new discordButtons(client);
 const disbut = require('discord-buttons');
 disbut(client);
 const verified_role_id = "922282005385863190";
@@ -440,7 +440,7 @@ let button2 = new buttonClient.MessageButton()
     srakaguwno.send({embed, button, button2,}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-	    buttonClient.on("yes", (inta) => inta.message.reply(":3"))
+	    buttonClient.on("yes", (inta) => embed = interaction.message.embeds[0].setColor("#00ff00");
   })
 
 
