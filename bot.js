@@ -422,7 +422,7 @@ client.on("message", async message => {
             message.channel.send(embed).then(message => { // Reactions
                 message.react("👍") // Change Emoji
                 message.react("👎") // Change Emoji
-})
-};
+
+});
 	
 client.login(process.env.BOT_TOKEN);
