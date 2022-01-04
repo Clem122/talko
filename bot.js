@@ -440,7 +440,7 @@ let button2 = new buttonClient.MessageButton()
     srakaguwno.send({embed, button, button2,}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-	    buttonClient.on("yes", (inta) => embed = interaction.message.embeds[0].setColor("#00ff00");
+	    buttonClient.on("yes", (inta) => embed = interaction.message.embeds[0].setColor("#00ff00"));
   })
 
 
