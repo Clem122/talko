@@ -440,8 +440,6 @@ if (command == "propozycja") {
         };
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
     srakaguwno.send({ embed });
-        embedMessage.react("👍");
-        embedMessage.react("👎");
   }
 
 
