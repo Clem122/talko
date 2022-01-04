@@ -455,7 +455,7 @@ let button = new disbut.MessageButton()
                     case "accept":
 
                         embed = interaction.message.embeds[0].setColor("#00ff00");
-                        await interaction.message.edit({
+                        interaction.message.edit({
                             embeds: [embed],
                         });
 	
