@@ -423,7 +423,7 @@ client.on("message", async message => {
         // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
         message.delete().catch(O_o => { });
         // And we get the bot to say the thing:
-	let button = new disbut.MessageButton()
+	const button = new disbut.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('My First Button!') //default: NO_LABEL_PROVIDED
   .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
