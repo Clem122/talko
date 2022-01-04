@@ -374,7 +374,6 @@ client.on("message", async message => {
             "description": `${sayMessage}`,
             "color": 11041206
         };
-	message.delete();
         sraka.send({ embed });
 }
 });
