@@ -358,7 +358,7 @@ client.on("message", async message => {
     
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    const channel = client.guild.channels.cache.find(ch => ch.name === 'vent');
+    let sraka = client.convertChannel(message.guild, client.config.suggestion.channelid)
 
     // Let's go with a few common example commands! Feel free to delete or change those.
 
@@ -375,8 +375,7 @@ client.on("message", async message => {
             "color": 11041206
         };
 	message.delete();
-	.then(function (suggestchannel) {
-        message.channel.send({ embed });
+        sraka.send({ embed });
 }
 });
 
