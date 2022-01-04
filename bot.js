@@ -445,7 +445,9 @@ if (command == "propozycja") {
     message.author.send("**- Dziękujemy za oddanie propozycji** :heart:");
 
     message.delete();
-}
+  }
+
+
 });
 
 client.login(process.env.BOT_TOKEN);
