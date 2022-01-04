@@ -451,7 +451,7 @@ let button2 = new buttonClient.MessageButton()
 client.on("message", (message) => {
 	if(message.content === "!button") {
 	/* Generate a Cute Embed :3 */
-	 const embed = new discord.MessageEmbed()
+	 const embed = new Discord.MessageEmbed()
 	 .setTitle("Do you like me?")
 	 .setColor("GREEN");
  
