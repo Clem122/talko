@@ -427,14 +427,12 @@ if (command == "propozycja") {
 let button = new disbut.MessageButton()
   .setStyle('green') //default: blurple
   .setLabel('Akceptuj') //default: NO_LABEL_PROVIDED
-  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  .setDisabled(); //disables the button | default: false
+  .setCustomId('suggestion_accept')
 	
 	let button2 = new disbut.MessageButton()
   .setStyle('red') //default: blurple
   .setLabel('Odrzuć') //default: NO_LABEL_PROVIDED
-  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  .setDisabled(); //disables the button | default: false
+  .setCustomId('suggestion_deny')
 	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
     srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
@@ -442,28 +440,46 @@ let button = new disbut.MessageButton()
         embedMessage.react("👎");
 });
   }
+	
+	    await interaction.deferUpdate();
 
+    if (interaction.isButton()) {
+
+        let interactionCategory = interaction.customId.toString().split("_");
+
+        switch (interactionCategory[0]) {
+            case "suggestion":
+                if (!interaction.member.permissions.has("ADMINISTRATOR")) return;
+
+                switch (interactionCategory[1]) {
+
+                    case "accept":
+
+                        embed = interaction.message.embeds[0].setColor("#00ff00");
+                        await interaction.message.edit({
+                            embeds: [embed],
+                        });
+
+                        break
+                    case "deny":
+
+                        embed = interaction.message.embeds[0].setColor("#ff0000");
+                        await interaction.message.edit({
+                            embeds: [embed],
+                        });
+
+
+                        break
+
+                }
+
+                break
+        }
+
+    }
+};
 
 });
 
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
-
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		const row = new MessageActionRow()
-			.addComponents(
-				// ...
-			);
-
-		const embed = new MessageEmbed()
-			.setColor('#0099ff')
-			.setTitle('Some title')
-			.setDescription('Some description here');
-
-		await interaction.reply({ content: 'Pong!', ephemeral: true, embeds: [embed], components: [row] });
-	}
-});
 
 client.login(process.env.BOT_TOKEN);
