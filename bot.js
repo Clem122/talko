@@ -427,7 +427,7 @@ if (command == "propozycja") {
 let button = new disbut.MessageButton()
   .setStyle('green') //default: blurple
   .setLabel('Akceptuj') //default: NO_LABEL_PROVIDED
-  .setCustomId('suggestion_accept')
+  .setID("click")
 	
 	let button2 = new disbut.MessageButton()
   .setStyle('red') //default: blurple
@@ -438,7 +438,7 @@ let button = new disbut.MessageButton()
     srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
-	    buttonClient.on("click", (inta) => inta.reply("Thanks for clicking me :3"))
+	    buttonClient.on("click", (inta) => inta.reply("guwno"))
   })
 
 
