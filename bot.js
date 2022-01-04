@@ -441,6 +441,9 @@ if (command == "propozycja") {
     srakaguwno.send({ embed });
         embedMessage.react("👍");
         embedMessage.react("👎");
-    };
+  }
+
+
+});
 
 client.login(process.env.BOT_TOKEN);
