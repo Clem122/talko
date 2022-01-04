@@ -364,7 +364,7 @@ client.on('message', message => {
 if (command == "wyznaj") {
     if (message.author.bot) return;
       if(!message.channel.guild) return message.reply('ta');
-    let say = new Discord.RichEmbed()
+    let say = new Discord.MessageEmbed()
   .setTitle(" " + message.author.username)
   .setAuthor("Wyznanie")
     .setDescription(args.join("  "))
