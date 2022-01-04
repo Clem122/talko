@@ -406,20 +406,6 @@ client.on("message", async message => {
 }
 });
 
-client.on('message', async message => {
-   if (message.content === "test") {
-let button = new disbut.MessageButton()
-  .setStyle('red') //default: blurple
-  .setLabel('My First Button!') //default: NO_LABEL_PROVIDED
-  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
-  .setDisabled(); //disables the button | default: false
-
-message.channel.send('Hey, i am powered by https://npmjs.com/discord-buttons', button);
-
-      message.channel.send("test components", button)
-   }
-})
-
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
@@ -444,14 +430,40 @@ let button = new disbut.MessageButton()
   .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
   .setDisabled(); //disables the button | default: false
 	
+	let button2 = new disbut.MessageButton()
+  .setStyle('red') //default: blurple
+  .setLabel('Odrzuć') //default: NO_LABEL_PROVIDED
+  .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
+  .setDisabled(); //disables the button | default: false
+	
         const srakaguwno = message.guild.channels.cache.find(ch => ch.name === 'propozycje');
-    srakaguwno.send({embed, button}).then(embedMessage => {
+    srakaguwno.send({embed, button, buttton2}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
 });
   }
 
 
+});
+
+const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	if (interaction.commandName === 'ping') {
+		const row = new MessageActionRow()
+			.addComponents(
+				// ...
+			);
+
+		const embed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Some title')
+			.setDescription('Some description here');
+
+		await interaction.reply({ content: 'Pong!', ephemeral: true, embeds: [embed], components: [row] });
+	}
 });
 
 client.login(process.env.BOT_TOKEN);
