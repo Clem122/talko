@@ -457,7 +457,7 @@ let button = new disbut.MessageButton()
                         embed = interaction.message.embeds[0].setColor("#00ff00");
                         interaction.message.edit({
                             embeds: [embed],
-                        });
+                        }
 	
 });
 	
