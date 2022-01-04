@@ -444,7 +444,7 @@ if (command == "propozycja") {
         embedMessage.react("👎");
 	    buttonClient.on("yes", (inta) => inta.message.reply("guwno"))
 	    buttonClient.on("no", (inta) => inta.message.reply("guwno2"))
-  })
+  )
 
 
 }
